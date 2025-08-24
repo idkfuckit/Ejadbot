@@ -8,7 +8,7 @@ TOKEN = os.environ.get('BOT_TOKEN')
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
-        # التحقق من وجود الرسالة أولاً
+        # التحقق من وجود الرسالة أولاً - هذا السطر مهم!
         if not update.message or not update.message.text:
             return  # اخرج إذا لا توجد رسالة نصية
         
@@ -31,5 +31,5 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 if __name__ == '__main__':
     app = Application.builder().token(TOKEN).build()
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-    print("Bot started...")
+    print("Bot started and waiting for messages...")
     app.run_polling()
